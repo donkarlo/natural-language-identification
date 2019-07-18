@@ -3,7 +3,7 @@ package com.nlp.naturalLanguageIdentification;
 import java.util.Scanner;
 
 /**
- *
+ * The bootstrap file
  * @author Mohammad Rahamni
  */
 public class LanguageIdentification {

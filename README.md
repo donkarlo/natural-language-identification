@@ -6,23 +6,23 @@
 
 # Dependencies, compilation and running (installations commands are for debian based OS)
  * JDK8 , or Java 1.8
-        ```
-        $ sudo sudo apt-get install openjdk-8-jdk
-        ```
+```
+    $ sudo sudo apt-get install openjdk-8-jdk
+```
  * install Maven:
-        ```
-        $ sudo apt-get install maven
-        ```
+```
+    $ sudo apt-get install maven
+```
  * clone the project from the git repository or simply copy it to a directory such as /path/to/project    
-        ```
-        $ cd /path/to/project<br/>
-        $ mvn clean install<br/>
-        $ mvn compile<br/>
-        $ mvn clean package<br/>
-        $ java -cp target/natural-language-identification-1.0-snapshot.jar com.nlp.naturalLanguageIdentification.LanguageIdentification
-         ```
+```
+    $ cd /path/to/project
+    $ mvn clean install
+    $ mvn compile
+    $ mvn clean package
+    $ java -cp target/natural-language-identification-1.0-snapshot.jar com.nlp.naturalLanguageIdentification.LanguageIdentification
+ ```
  * From here you will be asked for the piece of text for which you want to check the language followed by the number of characters in each ngrams. Then you will be presented a list of languages to which the text belongs ordered by the highest ranked one. 
  * At the moment the system supports three languages (English, French and German). To manually add more languages, simply add a corpus to "data/corpora/" with a file name which follows this pattern $xx.txt ($xx must be relaced with 2 alphabet code of the language, such as en.txt, fr.txt, etc.), then in src/main/java/com/nlp/naturalLanguageIdentification/LangCorporaFactorySingletone.java, in hardCodedSetting methos, add the language which complies the pattern with the rest. That is, add a line of code such as the following code. 
 ```
-LangCorporaFactorySingletone.inst.availableLangs.add(new Lang("es","Spanish","Español"));
+    LangCorporaFactorySingletone.inst.availableLangs.add(new Lang("es","Spanish","Español"));
 ``` 
