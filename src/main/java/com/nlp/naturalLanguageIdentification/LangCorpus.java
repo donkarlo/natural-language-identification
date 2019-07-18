@@ -1,4 +1,4 @@
-package com.nlp.naturalLanguageIdenttification;
+package com.nlp.naturalLanguageIdentification;
 
 import java.io.IOException;
 import java.util.ArrayList;
