@@ -30,6 +30,10 @@ public class LangCorporaFactorySingletone {
     private LangCorporaFactorySingletone() {
     }
 
+    /**
+     * The settings which should be removed to a text or database in future
+     * @todo move to a database in future
+     */
     private static void hardCodedSetting() {
 
         if (LangCorporaFactorySingletone.inst == null) {
@@ -51,6 +55,10 @@ public class LangCorporaFactorySingletone {
         }
     }
 
+    /**
+     * Get a new Instance of the settings
+     * @return 
+     */
     final public static LangCorpora getInst() {
         LangCorporaFactorySingletone.hardCodedSetting();
         return LangCorporaFactorySingletone.inst.langCorpora;

@@ -3,7 +3,7 @@ package com.nlp.naturalLanguageIdentification;
 import java.util.ArrayList;
 
 /**
- *
+ * Computes belonging rate of a sample score to a corpus using different strategies.
  * @author Mohammad Rahmani
  */
 public class TextFromCorpusLiklihood {
@@ -17,7 +17,7 @@ public class TextFromCorpusLiklihood {
     }
 
     /**
-     *
+     * Computes belonging rate of a sample score to a corpus using ngrams
      * @param n
      * @return
      */

@@ -5,7 +5,7 @@
  > Vinsensius Berlian Vega and Stéphane Bressan. Continuous-Learning Weighted-Trigram Approach for Indonesian Language Distinction: A Preliminary Study. In Proceedings of 19th International Conference on Computer Processing of Oriental Languages (ICCPOL 2001), Seoul, Korea, 2001a. Oriental Languages Computer Society.
 
 # Dependencies, compilation and running (installations commands are for debian based OS)
- * JDK8 , or Java 1.8
+ * Java 1.8+
 ```
     $ sudo sudo apt-get install openjdk-8-jdk
 ```
