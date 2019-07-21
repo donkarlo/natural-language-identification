@@ -85,12 +85,12 @@ public class LangsFreqs {
 
     public void printReport() {
         for (LangFreq langFreq : this.langsFreqs) {
-            String printString = "Lang: " + " " + langFreq.getLang().getLocalName() + " ";
-            printString += "# samples: " + langFreq.getTotalFreq() + " ";
-            printString += "# correct: " + langFreq.getCorrectPredictionFreq() + " ";
-            printString += "correct rate: " + langFreq.getCorrectRate() + " ";
-            printString += "# wrong: " + langFreq.getWrongPredictionFreq() + " ";
-            printString += "wrong rate: " + langFreq.getWrongRate() + " ";
+            String printString = "Lang: " + " " + langFreq.getLang().getLocalName() + ", ";
+            printString += "#samples: " + langFreq.getTotalFreq() + ", ";
+            printString += "#correct: " + langFreq.getCorrectPredictionFreq() + ", ";
+            printString += "correct rate: " + langFreq.getCorrectRate() + ", ";
+            printString += "#wrong: " + langFreq.getWrongPredictionFreq() + ", ";
+            printString += "wrong rate: " + langFreq.getWrongRate();
             System.out.println(printString);
         }
     }
