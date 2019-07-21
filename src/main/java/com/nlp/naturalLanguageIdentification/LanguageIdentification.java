@@ -21,7 +21,7 @@ public class LanguageIdentification {
             do {
                 System.out.println("Please type the text for language test: ");
                 Text text = new Text(scanner.nextLine());
-                System.out.println("Please type the number of characters in Ngram: ");
+                System.out.println("Please type the number of characters in ngram: ");
                 int n = Integer.parseInt(scanner.nextLine());
                 text.printNgramLangScoresDescendently(LangCorporaFactorySingletone.getLangCorpora(), n);
                 System.out.println("Another test?(y/n)");
