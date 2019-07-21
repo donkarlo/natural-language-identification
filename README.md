@@ -50,7 +50,7 @@
 	Lang:  English, #samples: 289, #correct: 285, correct rate: 0.986159169550173, #wrong: 4, wrong rate: 0.01384083044982699
 ```  
 
-# Cospora
+# Corpora
  * At the moment the application, supports three languages: English, French and German, which are very short stories of around 7500 character. To manually add more languages, simply add a corpus to "data/corpora/training" with a file name which follows the following pattern "$xx.txt" ($xx must be replaced with 2 alphabet code of the language, such as en.txt, fr.txt, etc.). Then, in "src/main/java/com/nlp/naturalLanguageIdentification/LangCorporaFactorySingletone.java", in hardCodedSetting method, add the language which complies the pattern with the rest. That is, add a line of code such as: 
 ```
     LangCorporaFactorySingletone.inst.availableLangs.add(new Lang("es","Spanish","Español"));
