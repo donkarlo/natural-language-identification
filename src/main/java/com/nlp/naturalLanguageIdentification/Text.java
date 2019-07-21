@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Models a piece of text
+ *
  * @author Mohammad Rahmani
  */
 public class Text {
@@ -12,13 +13,9 @@ public class Text {
      * the string representation of the text
      */
     protected String stringText;
-    /**
-     * Lazy holder of the guessed language
-     */
-    protected Lang guessedLang;
 
-    public Text(String text) {
-        this.stringText = text.toLowerCase().trim().replaceAll(" +", "_");;
+    public Text(String stringText) {
+        this.stringText = stringText.toLowerCase().trim().replaceAll(" +", "_");;
     }
 
     public String getStringText() {
@@ -26,25 +23,33 @@ public class Text {
     }
 
     /**
-     * To get a table of languages and the scores by which this text belongs to available LangCorpus
+     * To get a table of languages and the scores by which this text belongs to
+     * available LangCorpus
+     *
      * @param lCorpora
      * @param n
-     * @return 
+     * @return
      */
     public TextLangsScoresBank getNgramLangScores(LangCorpora lCorpora, int n) {
         TextLangsScoresBank textLangsScores = new TextLangsScoresBank(this);
         for (LangCorpus langcorpus : lCorpora.getLangCorpusArray()) {
             textLangsScores.addLangScore(langcorpus.getLang(), this.getNgramBelongingRate(langcorpus, n));
         }
-        TextLangsScoresBank textLangsScoresSorted = new TextLangsScoresBank(this);
-        
+
         return textLangsScores;
+    }
+
+    public Lang getMostProbableLangByNgram(LangCorpora lCorpora, int n) {
+        TextLangsScoresBank textLangsScores = this.getNgramLangScores(lCorpora, n);
+        textLangsScores.sortScoresDescendently();
+        return textLangsScores.getLangsScores().get(0).getLang();
     }
 
     /**
      * Print the results derived from ::getNgramLangScores
+     *
      * @param lCorpora
-     * @param n 
+     * @param n
      */
     public void printNgramLangScoresDescendently(LangCorpora lCorpora, int n) {
         TextLangsScoresBank textLangsScores = this.getNgramLangScores(lCorpora, n);
@@ -53,12 +58,11 @@ public class Text {
             System.out.println(lsbu.getLang().getLocalName() + ": " + lsbu.getScore());
         }
     }
-    
-    
 
     /**
-     * Extract available ngrams by the given length 
-     * The 2-grams of  Book is _b,bo,oo,ok,_k
+     * Extract available ngrams by the given length The 2-grams of Book is
+     * _b,bo,oo,ok,_k
+     *
      * @param n length of ngram
      * @return
      */
@@ -72,6 +76,7 @@ public class Text {
 
     /**
      * Gives Ngrams with frequencies of their Occurrences
+     *
      * @param n length of ngram
      * @return
      */
@@ -100,10 +105,12 @@ public class Text {
     }
 
     /**
-     * The belonging rate of this text to a corpus derived from likelihood.getNgramLikelihood
+     * The belonging rate of this text to a corpus derived from
+     * likelihood.getNgramLikelihood
+     *
      * @param lCorpus
      * @param n
-     * @return 
+     * @return
      */
     public double getNgramBelongingRate(LangCorpus lCorpus, int n) {
         TextFromCorpusLiklihood likelihood = new TextFromCorpusLiklihood(this, lCorpus);
@@ -112,8 +119,9 @@ public class Text {
 
     /**
      * Counts occurrences of a substring in a string
+     *
      * @param searchForStr
-     * @return 
+     * @return
      */
     public int getSubStrCount(String searchForStr) {
         String toSearchStr = this.getStringText();

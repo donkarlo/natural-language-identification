@@ -12,16 +12,23 @@ public class LangCorporaFactorySingletone {
 
     private static LangCorporaFactorySingletone inst;
     /**
-     * it contains files with names such as $lang2alph.txt
+     * it contains files with names such as $lang2alph.txt for training
      */
-    private String pathToCorporaDir;
+    private String pathToCorporaTrainingDir;
+    
     /**
-     * Cash to ...
+     * it contains files with names such as $lang2alph.txt for benchmark testing
      */
-    private String pathToCashedNgramFreqsDir;
+    private String pathToCorporaTestSentencesDir;
 
+    /**
+     * List of languages for which training corpus exists
+     */
     private ArrayList<Lang> availableLangs;
 
+    /**
+     * The training corpora
+     */
     private LangCorpora langCorpora;
 
     /**
@@ -41,7 +48,8 @@ public class LangCorporaFactorySingletone {
             LangCorporaFactorySingletone.inst.langCorpora = new LangCorpora();
             LangCorporaFactorySingletone.inst.availableLangs = new ArrayList<Lang>();
 
-            LangCorporaFactorySingletone.inst.pathToCorporaDir = "data/corpora/";
+            LangCorporaFactorySingletone.inst.pathToCorporaTrainingDir = "data/corpora/training/";
+            LangCorporaFactorySingletone.inst.pathToCorporaTestSentencesDir = "data/corpora/test/sentences/";
             //add available langs from here
 
             LangCorporaFactorySingletone.inst.availableLangs.add(new Lang("en","English","English"));
@@ -49,7 +57,7 @@ public class LangCorporaFactorySingletone {
             LangCorporaFactorySingletone.inst.availableLangs.add(new Lang("de","German","Deutsche"));
             
             for (Lang lang : LangCorporaFactorySingletone.inst.availableLangs) {
-                LangCorpus corpus = new LangCorpus(lang, new CorpusSource("FILE_PATH", LangCorporaFactorySingletone.inst.pathToCorporaDir + lang.getAlph2Id() + ".txt"));
+                LangCorpus corpus = new LangCorpus(lang, new CorpusSource("FILE_PATH", LangCorporaFactorySingletone.inst.pathToCorporaTrainingDir + lang.getAlph2Id() + ".txt"));
                 LangCorporaFactorySingletone.inst.langCorpora.addCorpus(corpus);
             }
         }
@@ -59,8 +67,20 @@ public class LangCorporaFactorySingletone {
      * Get a new Instance of the settings
      * @return 
      */
-    final public static LangCorpora getInst() {
+    final public static LangCorporaFactorySingletone getInst() {
         LangCorporaFactorySingletone.hardCodedSetting();
-        return LangCorporaFactorySingletone.inst.langCorpora;
+        return LangCorporaFactorySingletone.inst;
+    }
+    
+    final public static LangCorpora getLangCorpora() {
+        return LangCorporaFactorySingletone.getInst().langCorpora;
+    }
+    
+    public final static ArrayList<Lang> getAvailableLangs(){
+        return LangCorporaFactorySingletone.getInst().availableLangs;
+    }
+    
+    public final static String getPathToCorporaTestSentencesDir(){
+        return LangCorporaFactorySingletone.getInst().pathToCorporaTestSentencesDir;
     }
 }
